@@ -1,0 +1,14 @@
+E -> T E'
+E' -> + T E'
+E' -> - T E'
+E' -> Ɛ
+T ->  F T'
+T' -> * F T'
+T' -> / F T'
+T' -> Ɛ
+F -> ( E )
+F -> num
+F -> id
+string_test:
+num + id * num
+)

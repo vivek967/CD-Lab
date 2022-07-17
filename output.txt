@@ -1,0 +1,34 @@
+First: 
+( -> ( 
+) -> ) 
+* -> * 
++ -> + 
+- -> - 
+/ -> / 
+E -> ( num id 
+E' -> + - Ɛ 
+F -> ( num id 
+T -> ( num id 
+T' -> * / Ɛ 
+id -> id 
+num -> num 
+Ɛ -> Ɛ 
+
+stack                                       string                                  Action
+E $                              num + id * num $                                      TE'
+T E' $                           num + id * num $                                      FT'
+F T' E' $                        num + id * num $                                      num
+num T' E' $                      num + id * num $                                    match
+T' E' $                              + id * num $                                         
+E' $                                 + id * num $                                     +TE'
++ T E' $                             + id * num $                                    match
+T E' $                                 id * num $                                      FT'
+F T' E' $                              id * num $                                       id
+id T' E' $                             id * num $                                    match
+T' E' $                                   * num $                                     *FT'
+* F T' E' $                               * num $                                    match
+F T' E' $                                   num $                                      num
+num T' E' $                                 num $                                    match
+T' E' $                                         $                                         
+E' $                                            $                                         
+$                                               $                                 Accepted
